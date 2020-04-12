@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/BinaryTree/BinaryTree.h
+cassert
+-
+iostream
+-
+
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/BinaryTree/test_BinaryTree.cpp
+BinaryTree.h
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/BinaryTree/BinaryTree.h
+

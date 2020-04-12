@@ -1,0 +1,1 @@
+add_executable(test_BinaryTree test_BinaryTree.cpp)

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/AVLTree/AVLTree.h
+cassert
+-
+iostream
+-
+algorithm
+-
+
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/AVLTree/test_AVLTree.cpp
+AVLTree.h
+C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/AVLTree/AVLTree.h
+iostream
+-
+

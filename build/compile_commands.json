@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/build/tree/BinaryTree",
+  "command": "C:\\mingw64\\bin\\g++.exe     -g -g   -std=gnu++14 -o CMakeFiles\\test_BinaryTree.dir\\test_BinaryTree.cpp.obj -c C:\\Users\\Administrator\\Desktop\\Miscellaneous\\DataStruct\\tree\\BinaryTree\\test_BinaryTree.cpp",
+  "file": "C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/BinaryTree/test_BinaryTree.cpp"
+},
+{
+  "directory": "C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/build/tree/AVLTree",
+  "command": "C:\\mingw64\\bin\\g++.exe     -g -g   -std=gnu++14 -o CMakeFiles\\test_AVLTree.dir\\test_AVLTree.cpp.obj -c C:\\Users\\Administrator\\Desktop\\Miscellaneous\\DataStruct\\tree\\AVLTree\\test_AVLTree.cpp",
+  "file": "C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/AVLTree/test_AVLTree.cpp"
+}
+]

@@ -1,0 +1,2 @@
+add_subdirectory(BinaryTree)
+add_subdirectory(AVLTree)
