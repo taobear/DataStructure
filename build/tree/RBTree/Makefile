@@ -79,14 +79,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles\progress.marks
-	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 all
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\tree\RBTree\CMakeFiles\progress.marks
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 clean
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/clean
 .PHONY : clean
 
 # The main clean target
@@ -96,12 +96,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 preinstall
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 preinstall
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -109,44 +109,47 @@ depend:
 	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named test_BinaryTree
+# Convenience name for target.
+tree/RBTree/CMakeFiles/test_RbTree.dir/rule:
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/CMakeFiles/test_RbTree.dir/rule
+.PHONY : tree/RBTree/CMakeFiles/test_RbTree.dir/rule
 
-# Build rule for target.
-test_BinaryTree: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 test_BinaryTree
-.PHONY : test_BinaryTree
+# Convenience name for target.
+test_RbTree: tree/RBTree/CMakeFiles/test_RbTree.dir/rule
 
-# fast build rule for target.
-test_BinaryTree/fast:
-	$(MAKE) -f tree\BinaryTree\CMakeFiles\test_BinaryTree.dir\build.make tree/BinaryTree/CMakeFiles/test_BinaryTree.dir/build
-.PHONY : test_BinaryTree/fast
-
-#=============================================================================
-# Target rules for targets named test_AVLTree
-
-# Build rule for target.
-test_AVLTree: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 test_AVLTree
-.PHONY : test_AVLTree
-
-# fast build rule for target.
-test_AVLTree/fast:
-	$(MAKE) -f tree\AVLTree\CMakeFiles\test_AVLTree.dir\build.make tree/AVLTree/CMakeFiles/test_AVLTree.dir/build
-.PHONY : test_AVLTree/fast
-
-#=============================================================================
-# Target rules for targets named test_RbTree
-
-# Build rule for target.
-test_RbTree: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 test_RbTree
 .PHONY : test_RbTree
 
 # fast build rule for target.
 test_RbTree/fast:
-	$(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/build
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/build
 .PHONY : test_RbTree/fast
+
+test_RBTree.obj: test_RBTree.cpp.obj
+
+.PHONY : test_RBTree.obj
+
+# target to build an object file
+test_RBTree.cpp.obj:
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/test_RBTree.cpp.obj
+.PHONY : test_RBTree.cpp.obj
+
+test_RBTree.i: test_RBTree.cpp.i
+
+.PHONY : test_RBTree.i
+
+# target to preprocess a source file
+test_RBTree.cpp.i:
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/test_RBTree.cpp.i
+.PHONY : test_RBTree.cpp.i
+
+test_RBTree.s: test_RBTree.cpp.s
+
+.PHONY : test_RBTree.s
+
+# target to generate assembly for a file
+test_RBTree.cpp.s:
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/test_RBTree.cpp.s
+.PHONY : test_RBTree.cpp.s
 
 # Help Target
 help:
@@ -154,11 +157,12 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
+	@echo ... test_RbTree
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... test_BinaryTree
-	@echo ... test_AVLTree
-	@echo ... test_RbTree
+	@echo ... test_RBTree.obj
+	@echo ... test_RBTree.i
+	@echo ... test_RBTree.s
 .PHONY : help
 
 
@@ -170,6 +174,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d c:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

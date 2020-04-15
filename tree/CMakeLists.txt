@@ -1,2 +1,3 @@
 add_subdirectory(BinaryTree)
 add_subdirectory(AVLTree)
+add_subdirectory(RBTree)

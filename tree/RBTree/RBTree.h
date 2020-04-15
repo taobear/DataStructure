@@ -1,6 +1,8 @@
 #ifndef __RBTREE_H_
 #define __RBTREE_H_
 
+#include <cassert>
+
 enum Color {
     COLER_RED = 0,
     COLER_BLACK = 1,
@@ -39,8 +41,8 @@ public:
     void erase(const Key &key);
 
 private:
-    MyRbNode *insert(MyRbNode *x, const Key &key, const Value &val);
-    MyRbNode *erase(MyRbNode *x, const Key &key);
+    void insert(MyRbNode *x, const Key &key, const Value &val);
+    void erase(MyRbNode *x, const Key &key);
 
     const MyRbNode *minimum(const MyRbNode *x);
     const MyRbNode *maximum(const MyRbNode *x);
@@ -60,7 +62,9 @@ private:
     MyRbNode *leftRotate(MyRbNode *x);
     MyRbNode *rightRotate(MyRbNode *x);
 
-    MyRbNode *flipColor(MyRbNode *x);
+    void flipColor(MyRbNode *x);
+
+    void destroy(MyRbNode *x);
 
     bool isRed(MyRbNode *x) { return !(x == nullptr || x->color != COLER_RED); }
 
@@ -68,6 +72,41 @@ private:
     MyRbNode *root_;
     int count_;
 };
+
+template <class Key, class Value>
+RbTree<Key, Value>::RbTree()
+{
+    root_ = nullptr;
+    count_ = 0;
+}
+
+template <class Key, class Value>
+RbTree<Key, Value>::~RbTree()
+{
+    destroy(root_);
+}
+
+template <class Key, class Value>
+void RbTree<Key, Value>::destroy(MyRbNode *x)
+{
+    if (x == nullptr)
+    {
+        return;
+    }
+
+    if (x->left != nullptr)
+    {
+        destroy(x->left);
+    }
+
+    if (x->right != nullptr)
+    {
+        destroy(x->right);
+    }
+
+    count_--;
+    delete x;
+}
 
 template <class Key, class Value>
 const typename RbTree<Key, Value>::MyRbNode *
@@ -119,7 +158,7 @@ void RbTree<Key, Value>::transplant(MyRbNode *oldNode, MyRbNode *newNode)
 }
 
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
+typename RbTree<Key, Value>::MyRbNode *
 RbTree<Key, Value>::leftRotate(MyRbNode *x)
 {
     assert(x != nullptr);
@@ -141,7 +180,7 @@ RbTree<Key, Value>::leftRotate(MyRbNode *x)
 }
 
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
+typename RbTree<Key, Value>::MyRbNode *
 RbTree<Key, Value>::rightRotate(MyRbNode *x)
 {
     assert(x != nullptr);
@@ -201,15 +240,14 @@ void RbTree<Key, Value>::rightRotateWithParent(MyRbNode *x)
 }
 
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
-RbTree<Key, Value>::flipColor(MyRbNode *x)
+void RbTree<Key, Value>::flipColor(MyRbNode *x)
 {
     assert(x != nullptr);
     assert(x->left != nullptr && x->right != nullptr);
 
     x->color = COLER_RED;
-    x->left = COLER_BLACK;
-    x->right = COLER_BLACK;
+    x->left->color = COLER_BLACK;
+    x->right->color = COLER_BLACK;
 }
 
 template <class Key, class Value>
@@ -247,8 +285,7 @@ void RbTree<Key, Value>::insertFixUp(MyRbNode *x)
 }
 
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
-RbTree<Key, Value>::insert(MyRbNode *x, const Key &key, const Value &val)
+void RbTree<Key, Value>::insert(MyRbNode *x, const Key &key, const Value &val)
 {
     MyRbNode *par = nullptr;
     MyRbNode *cur = root_;
@@ -266,32 +303,31 @@ RbTree<Key, Value>::insert(MyRbNode *x, const Key &key, const Value &val)
     }
     
     MyRbNode *newNode = new MyRbNode(key, val, COLER_RED);
+    count_++;
 
     newNode->parent = par;
     if (par == nullptr) {
         root_ = newNode;
     } else if (key < par->key) {
-        cur->left = newNode;
+        par->left = newNode;
     } else {
-        cur->right = newNode;
+        par->right = newNode;
     }
 
-    insertFixUp(cur);
+    insertFixUp(newNode);
 }
 
 template <class Key, class Value>
 void RbTree<Key, Value>::insert(const Key &key, const Value &val)
 {
     insert(root_, key, val);
-    root_->color = COLER_BLACK;
 }
 
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
-RbTree<Key, Value>::erase(MyRbNode *x, const Key &key)
+void RbTree<Key, Value>::erase(MyRbNode *x, const Key &key)
 {
     if (x == nullptr) {
-        return x;
+        return;
     }
 
     if (key < x->key) {
@@ -329,6 +365,7 @@ RbTree<Key, Value>::erase(MyRbNode *x, const Key &key)
         transplant(x, successor);
         
         delete(x);
+        count_--;
     }
 }
 
@@ -336,11 +373,11 @@ RbTree<Key, Value>::erase(MyRbNode *x, const Key &key)
  * @brief 删除节点为左子节点上的调整操作
  */
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
+typename RbTree<Key, Value>::MyRbNode *
 RbTree<Key, Value>::eraseFixUpLeftNode(MyRbNode *x)
 {
     if (x == nullptr) {
-        return;
+        return x;
     }
 
     MyRbNode *p = x->parent; // x的父节点
@@ -355,12 +392,12 @@ RbTree<Key, Value>::eraseFixUpLeftNode(MyRbNode *x)
         s = s->parent->right;
     }
 
-    if (!isRed(s->left) && !isRed(s->right)) {
+    MyRbNode *sl = s->left;
+    MyRbNode *sr = s->right;
+    if (!isRed(sl) && !isRed(sr)) {
         s->color = COLER_RED;
         x = p;
     } else {
-        MyRbNode *sl = s->left;
-        MyRbNode *sr = s->right;
         if (!isRed(sr)) {
             rightRotateWithParent(sl);
 
@@ -371,7 +408,7 @@ RbTree<Key, Value>::eraseFixUpLeftNode(MyRbNode *x)
         leftRotateWithParent(p);
 
         s->color = p->color;
-        s->right->color = COLER_BLACK;
+        sr->color = COLER_BLACK;
         p->color = COLER_BLACK;
 
         x = root_; // 已经调整完成，直接将下次调整的节点置为根节点
@@ -384,11 +421,11 @@ RbTree<Key, Value>::eraseFixUpLeftNode(MyRbNode *x)
  * @brief 删除节点为右子节点上的调整操作
  */
 template <class Key, class Value>
-RbTree<Key, Value>::MyRbNode *
+typename RbTree<Key, Value>::MyRbNode *
 RbTree<Key, Value>::eraseFixUpRightNode(MyRbNode *x)
 {
     if (x == nullptr) {
-        return;
+        return x;
     }
 
     MyRbNode *p = x->parent;
@@ -403,12 +440,12 @@ RbTree<Key, Value>::eraseFixUpRightNode(MyRbNode *x)
         s = s->parent->left;
     }
 
-    if (!isRed(s->left) && !isRed(s->right)) {
+    MyRbNode *sl = s->left;
+    MyRbNode *sr = s->right;
+    if (!isRed(sl) && !isRed(sr)) {
         s->color = COLER_RED;
         x = p;
     } else {
-        MyRbNode *sl = s->left;
-        MyRbNode *sr = s->right;
         if (!isRed(sl)) {
             leftRotateWithParent(sr);
 
@@ -419,7 +456,7 @@ RbTree<Key, Value>::eraseFixUpRightNode(MyRbNode *x)
         rightRotateWithParent(p);
 
         s->color = p->color;
-        s->left->color = COLER_BLACK;
+        sl->color = COLER_BLACK;
         p->color = COLER_BLACK;
 
         x = root_;

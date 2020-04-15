@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree
+# Install script for directory: C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/tree/RBTree
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -30,13 +30,5 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/build/tree/BinaryTree/cmake_install.cmake")
-  include("C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/build/tree/AVLTree/cmake_install.cmake")
-  include("C:/Users/Administrator/Desktop/Miscellaneous/DataStruct/build/tree/RBTree/cmake_install.cmake")
-
 endif()
 

@@ -64,18 +64,21 @@ CMAKE_BINARY_DIR = C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build
 # Convenience name for "all" pass in the directory.
 tree/all: tree/BinaryTree/all
 tree/all: tree/AVLTree/all
+tree/all: tree/RBTree/all
 
 .PHONY : tree/all
 
 # Convenience name for "clean" pass in the directory.
 tree/clean: tree/BinaryTree/clean
 tree/clean: tree/AVLTree/clean
+tree/clean: tree/RBTree/clean
 
 .PHONY : tree/clean
 
 # Convenience name for "preinstall" pass in the directory.
 tree/preinstall: tree/BinaryTree/preinstall
 tree/preinstall: tree/AVLTree/preinstall
+tree/preinstall: tree/RBTree/preinstall
 
 .PHONY : tree/preinstall
 
@@ -186,6 +189,61 @@ tree/AVLTree/CMakeFiles/test_AVLTree.dir/clean:
 
 # clean rule for target.
 clean: tree/AVLTree/CMakeFiles/test_AVLTree.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory tree/RBTree
+
+# Convenience name for "all" pass in the directory.
+tree/RBTree/all: tree/RBTree/CMakeFiles/test_RbTree.dir/all
+
+.PHONY : tree/RBTree/all
+
+# Convenience name for "clean" pass in the directory.
+tree/RBTree/clean: tree/RBTree/CMakeFiles/test_RbTree.dir/clean
+
+.PHONY : tree/RBTree/clean
+
+# Convenience name for "preinstall" pass in the directory.
+tree/RBTree/preinstall:
+
+.PHONY : tree/RBTree/preinstall
+
+#=============================================================================
+# Target rules for target tree/RBTree/CMakeFiles/test_RbTree.dir
+
+# All Build rule for target.
+tree/RBTree/CMakeFiles/test_RbTree.dir/all:
+	$(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/depend
+	$(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles --progress-num=5,6 "Built target test_RbTree"
+.PHONY : tree/RBTree/CMakeFiles/test_RbTree.dir/all
+
+# Include target in all.
+all: tree/RBTree/CMakeFiles/test_RbTree.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+tree/RBTree/CMakeFiles/test_RbTree.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 tree/RBTree/CMakeFiles/test_RbTree.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Administrator\Desktop\Miscellaneous\DataStruct\build\CMakeFiles 0
+.PHONY : tree/RBTree/CMakeFiles/test_RbTree.dir/rule
+
+# Convenience name for target.
+test_RbTree: tree/RBTree/CMakeFiles/test_RbTree.dir/rule
+
+.PHONY : test_RbTree
+
+# clean rule for target.
+tree/RBTree/CMakeFiles/test_RbTree.dir/clean:
+	$(MAKE) -f tree\RBTree\CMakeFiles\test_RbTree.dir\build.make tree/RBTree/CMakeFiles/test_RbTree.dir/clean
+.PHONY : tree/RBTree/CMakeFiles/test_RbTree.dir/clean
+
+# clean rule for target.
+clean: tree/RBTree/CMakeFiles/test_RbTree.dir/clean
 
 .PHONY : clean
 
