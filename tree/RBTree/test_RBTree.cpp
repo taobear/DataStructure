@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-void initAVLTree(RbTree<int, int> &rbt)
+void initRbTree(RbTree<int, int> &rbt)
 {
     rbt.insert(1, 2);
     rbt.insert(0, 1);
@@ -18,7 +18,21 @@ int main(int argc, char **argv)
 
     RbTree<int, int> rbt;
 
-    initAVLTree(rbt);
+    initRbTree(rbt);
+
+    rbt.inOrder();
+    cout << endl;
+
+    rbt.erase(1);
+    rbt.inOrder();
+    cout << endl;
+
+    rbt.erase(2);
+    rbt.inOrder();
+    cout << endl;
+
+    cout << "MAX:" << rbt.maximum() << endl;
+    cout << "MIN:" << rbt.minimum() << endl;
 
     return 0;
 }
